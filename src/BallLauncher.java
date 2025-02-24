@@ -5,7 +5,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
 
-public class BallLauncher extends GraphicsProgram{
+public class BallLauncher extends GraphicsProgram implements ActionListener {
 	public static final int PROGRAM_HEIGHT = 600;
 	public static final int PROGRAM_WIDTH = 800;
 	public static final int SIZE = 25;
@@ -29,6 +29,11 @@ public class BallLauncher extends GraphicsProgram{
 	}
 	
 	public void mousePressed(MouseEvent e) {
+		for (GOval ball : balls) {
+			if(ball.getX() < 100) {
+				return;
+			}
+		}
 		GOval ball = makeBall(SIZE/2, e.getY());
 		add(ball);
 		balls.add(ball);
